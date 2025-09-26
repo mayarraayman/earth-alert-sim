@@ -1,96 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Oblivara Design System - NASA-Inspired Space Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Space & Deep Sky Colors */
+    --background: 220 25% 4%;
+    --foreground: 210 100% 98%;
+    
+    --space-deep: 220 30% 2%;
+    --space-medium: 220 25% 8%;
+    --space-light: 220 20% 15%;
+    
+    /* NASA Brand Colors */
+    --nasa-blue: 214 100% 45%;
+    --nasa-red: 0 85% 55%;
+    --nasa-white: 0 0% 100%;
+    
+    /* Mission Critical Colors */
+    --primary: 214 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 214 100% 65%;
+    
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 210 100% 98%;
+    
+    --accent: 45 100% 60%;
+    --accent-foreground: 220 25% 4%;
+    --accent-glow: 45 100% 80%;
+    
+    /* Alert & Danger States */
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-glow: 0 85% 75%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --warning-glow: 38 92% 70%;
+    
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-glow: 142 76% 56%;
+    
+    /* UI Elements */
+    --card: 220 20% 10%;
+    --card-foreground: 210 100% 98%;
+    --card-border: 220 15% 20%;
+    
+    --popover: 220 20% 8%;
+    --popover-foreground: 210 100% 98%;
+    
+    --muted: 220 15% 12%;
+    --muted-foreground: 210 20% 70%;
+    
+    --border: 220 15% 20%;
+    --input: 220 20% 12%;
+    --ring: 214 100% 45%;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-space: linear-gradient(180deg, hsl(var(--space-deep)), hsl(var(--space-medium)));
+    --gradient-earth: linear-gradient(135deg, hsl(214, 100%, 45%), hsl(142, 76%, 36%));
+    --gradient-asteroid: linear-gradient(135deg, hsl(15, 80%, 45%), hsl(0, 85%, 55%));
+    --gradient-alert: linear-gradient(135deg, hsl(var(--destructive)), hsl(var(--warning)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--accent)));
+    
+    /* Shadows & Glows */
+    --shadow-space: 0 25px 50px -12px hsl(var(--space-deep) / 0.8);
+    --shadow-primary: 0 10px 30px -10px hsl(var(--primary) / 0.4);
+    --shadow-destructive: 0 10px 30px -10px hsl(var(--destructive) / 0.4);
+    --glow-primary: 0 0 30px hsl(var(--primary-glow) / 0.6);
+    --glow-accent: 0 0 20px hsl(var(--accent-glow) / 0.5);
+    --glow-destructive: 0 0 25px hsl(var(--destructive-glow) / 0.6);
+    
+    /* Animation Easing */
+    --ease-space: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-impact: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.4s var(--ease-space);
+    --transition-fast: all 0.2s var(--ease-space);
   }
 
+  /* Dark mode optimizations */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --space-deep: 220 30% 1%;
+    --space-medium: 220 25% 6%;
+    --glow-primary: 0 0 40px hsl(var(--primary-glow) / 0.8);
+  }
+}
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-space);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* Space-themed scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--space-medium));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+}
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@layer components {
+  /* Mission Control Typography */
+  .mission-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 0.9;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: var(--glow-primary);
+  }
+  
+  .mission-subtitle {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 3vw, 2.5rem);
+    color: hsl(var(--accent));
+    text-shadow: var(--glow-accent);
+  }
+  
+  .control-label {
+    font-family: 'Orbitron', monospace;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: hsl(var(--primary));
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .data-readout {
+    font-family: 'Orbitron', monospace;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: hsl(var(--accent));
+  }
+  
+  /* Interactive Elements */
+  .space-glass {
+    background: hsl(var(--card) / 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.3);
+    box-shadow: var(--shadow-space);
+  }
+  
+  .mission-button {
+    @apply relative overflow-hidden;
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    border: 1px solid hsl(var(--primary));
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition-smooth);
+  }
+  
+  .mission-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary), var(--glow-primary);
+  }
+  
+  .mission-button:active {
+    transform: translateY(0);
+  }
+  
+  .alert-button {
+    @apply relative overflow-hidden;
+    background: var(--gradient-alert);
+    color: hsl(var(--destructive-foreground));
+    border: 1px solid hsl(var(--destructive));
+    box-shadow: var(--shadow-destructive);
+    transition: var(--transition-smooth);
+  }
+  
+  .alert-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-destructive), var(--glow-destructive);
+  }
+  
+  .success-button {
+    background: var(--gradient-success);
+    color: hsl(var(--success-foreground));
+    border: 1px solid hsl(var(--success));
+  }
+  
+  /* Pulse animations for alerts */
+  .pulse-alert {
+    animation: pulse-alert 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-alert {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  /* Data visualization elements */
+  .trajectory-line {
+    stroke: hsl(var(--destructive));
+    stroke-width: 2;
+    stroke-dasharray: 5, 5;
+    animation: trajectory-flow 2s linear infinite;
+  }
+  
+  @keyframes trajectory-flow {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: 20;
+    }
   }
 }
 
